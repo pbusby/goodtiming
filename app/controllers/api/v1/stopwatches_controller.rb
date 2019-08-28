@@ -3,7 +3,9 @@ module Api
         class StopwatchesController < ApplicationController
 
             def index
-                stopwatches = Stopwatches.all
+                @stopwatches = Stopwatch.all
+                render json: {status: 'ok', message: 'loaded watches!', data: @stopwatches }, status: :ok
+
             end
 
             def show
