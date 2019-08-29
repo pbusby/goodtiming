@@ -1,0 +1,17 @@
+@import 'pages/home.scss';
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+// Common Scss
+// @import '../../node_modules/bootstrap/scss/functions';
+// @import '../../node_modules/bootstrap/scss/variables';
+// @import '../../node_modules/bootstrap/scss/mixins';
+
+// Boostrap Themed Scss
+// @import '../../node_modules/bootstrap/scss/bootstrap-grid';
+// @import '../../node_modules/bootstrap/scss/utilities';
+// @import '../../node_modules/bootstrap/scss/grid';
+
+h1 {
+    color: red;
+}
+
