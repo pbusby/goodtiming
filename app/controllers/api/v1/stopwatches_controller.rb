@@ -9,6 +9,8 @@ module Api
             end
 
             def show
+                @stopwatch = Stopwatch.find(params[:id])
+                render json: {status: 'ok', message: 'loaded watch!', data: @stopwatch }, status: :ok
             end
 
             def create
@@ -23,6 +25,7 @@ module Api
             private
 
             def stopwatch_params
+                params.require(:stopwatch).permit(:id, :name, :description, :total_time)
             end
 
         end
