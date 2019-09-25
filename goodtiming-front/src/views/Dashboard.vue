@@ -3,6 +3,7 @@
     <h1>Welcome to the dashboard!</h1>
     <div class v-for="(stopwatch, index) in wholeResponse" :key="index">
       <h4>{{stopwatch.name}}</h4>
+      <button class @click="showStopwatch(stopwatch.id)">View Stats</button>
     </div>
   </div>
 </template>
@@ -14,6 +15,11 @@ export default {
   name: "Dashboard",
   props: {
     msg: String
+  },
+  methods: {
+    showStopwatch(id) {
+      this.$router.push(`/stopwatches/${id}`);
+    }
   },
   data() {
     return {
