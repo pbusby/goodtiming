@@ -5,16 +5,21 @@
       <h4>{{stopwatch.name}}</h4>
       <button class @click="showStopwatch(stopwatch.id)">View Stats</button>
     </div>
+    <NewWatch />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import NewWatch from "@/components/NewWatch.vue"
 
 export default {
   name: "Dashboard",
+  components: {
+    NewWatch      
+  },
   props: {
-    msg: String
+    placeHolder: String
   },
   methods: {
     showStopwatch(id) {
