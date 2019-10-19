@@ -14,18 +14,27 @@ module Api
             end
 
             def create
+                @stopwatch = Stopwatch.new(stopwatch_params)
+                if @stopwatch.save
+                    render json: {status: 'ok', message: 'new watch saved to DB!', data: @stopwatch}, status: :ok
+                else
+                    render json: {status: 'error', message: 'watch failed to save to DB :('}
+                end
             end
 
             def destroy
             end
 
             def update
+                @stopwatch = Stopwatch.find(params[:id])
+                @stopwatch.update(stopwatch_params)
+                render json: {status: 'ok', message: 'watch updated in DB!', data: @stopwatch}, status: :ok
             end
 
             private
 
             def stopwatch_params
-                params.require(:stopwatch).permit(:id, :name, :description, :total_time)
+                params.permit(:id, :name, :description, :total_time)
             end
 
         end
