@@ -1,5 +1,4 @@
 function JsWatch (elem) {
-    debugger
     var time = 0;
     var interval;
     var offset;

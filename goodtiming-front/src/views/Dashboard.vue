@@ -1,11 +1,17 @@
 <template>
-  <div>
-    <h1>Welcome to the dashboard!</h1>
-    <div class v-for="(stopwatch, index) in wholeResponse" :key="index">
-      <h4>{{stopwatch.name}}</h4>
-      <button class @click="showStopwatch(stopwatch.id)">View Stats</button>
+  <div class="container">
+    <h1>GOODTIMING APP</h1>
+    <div class="d-flex flex-wrap mt-5">
+      {{wholeResponse}}
+      <div class="watch-item" v-for="(stopwatch, index) in wholeResponse" :key="index">
+        <div class="">
+          <h4 style="display: inline-block">{{stopwatch.name}}</h4>
+          <h4 class="delete-icon pl-3" @click="deleteStopWatch(stopwatch.id)">X</h4>
+        </div>
+        <button class @click="showStopwatch(stopwatch.id)">View Stats</button>
+      </div>
     </div>
-    <NewWatch />
+    <NewWatch @update-dashboard="updateDashboard"/>
   </div>
 </template>
 
@@ -24,6 +30,21 @@ export default {
   methods: {
     showStopwatch(id) {
       this.$router.push(`/stopwatches/${id}`);
+    },
+    updateDashboard(e) {
+      this.$emit('update-key', 1)
+    },
+    deleteStopWatch(id) {
+      axios 
+        .delete(`http://localhost:3000/api/v1/stopwatches/${id}`)
+        .then(response => {
+           self.wholeResponse = response.data.data;
+           const watchIndex = this.wholeResponse.findIndex(w => w.id === id )
+           this.wholeResponse.splice(watchIndex, 1)
+      })
+      .catch(error => {
+        console.log(error);
+      });
     }
   },
   data() {

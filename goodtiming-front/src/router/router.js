@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Dashboard from '../views/Dashboard.vue'
+// import Dashboard from '../views/Dashboard.vue'
+import Canvas from '../views/Canvas.vue'
 import Stopwatch from '@/components/Stopwatch'
-import Home from '../views/Home.vue'
+import Stats from '@/components/Stats'
 
 Vue.use(Router)
 
@@ -11,13 +12,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'Canvas',
+      component: Canvas
     },
     {
-      path: '/dashboard',
-      name: 'Dashboard',
-      component: Dashboard
+      path: '/stats',
+      name: 'Stats',
+      component: Stats
     },
     {
       path: '/stopwatches/:id',

@@ -23,6 +23,9 @@ module Api
             end
 
             def destroy
+                @stopwatch = Stopwatch.find(params[:id])
+                @stopwatch.destroy
+                render json: {status: 'ok', message: 'deleted watch!', data: @stopwatch }, status: :ok
             end
 
             def update

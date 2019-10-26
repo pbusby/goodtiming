@@ -5,13 +5,13 @@
     <p>My id is: {{singleWatch.id}}</p>
     <p>My description is: {{singleWatch.description}}</p>
     <p>My cumulative time is: {{cumulativeTime}}</p>
-        <p>My elapsed time is: {{elapsedTime}}</p>
+    <p>My elapsed time is: {{elapsedTime}}</p>
 
-    <button class @click="watchHandler()">Start</button>
+    <button class v-if="!jsWatch.isOn" @click="watchHandler()">Start</button>
     <!-- <button class @click="getStartTime">Start</button> -->
-    <button class @click="watchHandler()">Stop</button>
+    <button class v-if="jsWatch.isOn" @click="watchHandler()">Stop</button>
         <!-- <button class @click="endAndElapsed">Stop</button> -->
-
+    <button class @click="reset()">Clear</button>
     <button class @click="updateTotalTime">Save Progress</button>
 
     <!-- <p>{{startTime}}</p>
@@ -31,6 +31,7 @@ export default {
       endTime: 0,
       elapsedTime: 0,
       cumeTime: 0,
+      isOn: false,
     };
   },
   computed: {
@@ -69,11 +70,17 @@ export default {
         this.getStartTime();
       }
     },
+    reset(){
+      this.startTime = 0;
+      this.endTime = 0;
+      this.elapsedTime = 0;
+      this.jsWatch.reset();
+      this.$refs.timer.innerText = "00 : 00 . 000"
+    },
     updateTotalTime(e) {
         e.preventDefault();
         let currentObj = this;
         let updatedTime = this.cumeTime
-        debugger
         this.axios.patch(`http://localhost:3000/api/v1/stopwatches/${this.singleWatch.id}`, {
             total_time: updatedTime
         })
@@ -86,7 +93,6 @@ export default {
     }
   },
   mounted() {
-    debugger
     this.jsWatch = new JsWatch(this.$refs.timer)
     var self = this;
     axios
