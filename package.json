@@ -1,0 +1,13 @@
+{
+    "name": "goodtiming",
+    "license": "MIT",
+    "engines": {
+      "node": "11.2.0",
+      "yarn": "1.7.0"
+    },
+    "scripts": {
+      "build": "yarn --cwd goodtiming-front install && yarn --cwd goodtiming-front build",
+      "deploy": "cp -a goodtiming-front/build/. public/",
+      "heroku-postbuild": "yarn build && yarn deploy"
+    }
+  }
