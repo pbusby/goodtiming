@@ -2,7 +2,6 @@
   <div class="container">
     <h1>GOODTIMING APP</h1>
     <div class="d-flex flex-wrap mt-5">
-      {{wholeResponse}}
       <div class="watch-item" v-for="(stopwatch, index) in wholeResponse" :key="index">
         <div class="">
           <h4 style="display: inline-block">{{stopwatch.name}}</h4>
