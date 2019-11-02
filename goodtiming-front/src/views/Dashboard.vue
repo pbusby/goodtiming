@@ -35,7 +35,7 @@ export default {
     },
     deleteStopWatch(id) {
       axios 
-        .delete(`http://localhost:3000/api/v1/stopwatches/${id}`)
+        .delete(`https://goodtiming.herokuapp.com/api/v1/stopwatches/${id}`)
         .then(response => {
            self.wholeResponse = response.data.data;
            const watchIndex = this.wholeResponse.findIndex(w => w.id === id )
@@ -54,7 +54,7 @@ export default {
   mounted() {
     var self = this;
     axios
-      .get("http://localhost:3000/api/v1/stopwatches")
+      .get("https://goodtiming.herokuapp.com/api/v1/stopwatches")
       .then(response => {
         self.wholeResponse = response.data.data;
       })
