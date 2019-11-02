@@ -8,6 +8,6 @@
   "scripts": {
     "build": "yarn --cwd goodtiming-front install && yarn --cwd goodtiming-front build",
     "deploy": "cp -a goodtiming-front/dist/. public/",
-    "heroku-postbuild": "yarn install && yarn deploy"
+    "heroku-postbuild": "yarn build && yarn deploy"
   }
 }
