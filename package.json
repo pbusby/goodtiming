@@ -6,8 +6,8 @@
     "yarn": "1.7.0"
   },
   "scripts": {
-    "build": "yarn --cwd goodtiming-front install && yarn --cwd goodtiming-front build",
+    "build": "cd goodtiming-front && yarn install && yarn build",
     "deploy": "cp -a goodtiming-front/dist/. public/",
-    "heroku-postinstall": "yarn build && yarn deploy"
+    "postinstall": "yarn build && yarn deploy && echo 'Vue app built!"
   }
 }
