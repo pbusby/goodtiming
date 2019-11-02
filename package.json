@@ -8,6 +8,6 @@
   "scripts": {
     "build": "cd goodtiming-front && yarn install && yarn build",
     "deploy": "cp -a goodtiming-front/dist/. public/",
-    "postinstall": "yarn build && yarn deploy && echo 'Vue app built!"
+    "postinstall": "yarn build && yarn deploy && echo 'Vue app built!'"
   }
 }
