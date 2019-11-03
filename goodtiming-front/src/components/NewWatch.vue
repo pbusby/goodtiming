@@ -30,7 +30,7 @@ export default {
         submit(e) {
             // e.preventDefault();
             let currentObj = this;
-            this.axios.post("https://goodtiming.herokuapp.com/api/v1/stopwatches", {
+            this.axios.post("http://localhost:3000/api/v1/stopwatches", {
                 name: this.name,
                 description: this.description
             })
