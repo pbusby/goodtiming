@@ -117,7 +117,7 @@ export default {
         e.preventDefault();
         let currentObj = this;
         let updatedTime = this.cumeTime
-        this.axios.patch(`http://localhost:3000/api/v1/stopwatches/${this.singleWatch.id}`, {
+        this.axios.patch(`https://goodtiming.herokuapp.com/api/v1/stopwatches/${this.singleWatch.id}`, {
             total_time: updatedTime
         })
         .then(function (response) {
@@ -132,7 +132,7 @@ export default {
     this.jsWatch = new JsWatch(this.$refs.timer)
     var self = this;
     axios
-      .get(`http://localhost:3000/api/v1/stopwatches/${self.id}`)
+      .get(`https://goodtiming.herokuapp.com/api/v1/stopwatches/${self.id}`)
       .then(response => {
         self.singleWatch = response.data.data;
         self.cumeTime = self.singleWatch.total_time
